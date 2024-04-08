@@ -1,0 +1,1 @@
+# hsh-latex-templates
