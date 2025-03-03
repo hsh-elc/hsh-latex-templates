@@ -1,0 +1,152 @@
+\documentclass[
+a4paper,
+12pt,
+parskip=half,
+numbers=noendperiod,
+DIV=15,% ! wenn verändert komplette Arbeit überprüfen!
+headinclude,
+headheight=36pt,
+toc=sectionentrywithdots]{scrartcl}
+
+%%% Präambel ------------------------------------------+
+%%% common packages                                    |
+\input{tex/prae-com}
+%%% packages for development                           |
+\input{tex/prae-dev}
+%%% packages with draft settings                       |
+% \input{tex/prae-draft}
+%%% packages with final settings/for final compilation |
+% \input{tex/prae-final}
+%%% ---------------------------------------------------+
+
+%%% manuelle Anpassungen der Worttrennungen
+\input{tex/w-sep}
+
+%%% Glossar bzw. Akronyme einbinden
+\input{gls/gls}
+\input{gls/acr}
+
+%%% Literatur-Liste einbinden - aus Kompatibilitätsgründen mit LaTeX Workshop (VS Code Erweiterung) hier
+%%% Tipp: Bibliografie-Dateien für die Verwendung mit BibLaTeX können direkt aus Citavi exportiert werden
+\addbibresource{bib/Literatur.bib}
+
+%%% hier Titel, Namen, Daten definieren --------------------+
+%%% nachfolgenden Kommentar entfernen um HsH Logo auf       |
+%%% Titelseite einzufügen; Zahl im Argument des Befehls     |
+%%% entspricht Fakultät: 0 -> grau, 1 -> Fak. I, usw.       |
+\LogoHsH{1}
+\Fakultaet{Fakultät I -- Elektro- und Informationstechnik}
+\Fachgebiet{Fachgebiet Elektrische Antriebe und Automatisierungstechnik}
+\Titelueberschrift{Labor Elektrische Energieumformung}
+\Titel{Versuch Dynamische Charakterisierung von Leistungshalbleitern}
+\Untertitel{Versuchsbericht}
+%%% über optionales Argument kann auch hier die Bezeichnung |
+%%% des Feldes auf der Titelseite angepasst werden          |
+\VerfasserIn[Verfasserin]{Jane Doe}{1234567}
+%%% über optionales Argument kann auch hier die Bezeichnung |
+%%% des Feldes auf der Titelseite angepasst werden          |
+\TeilnehmerIn[Teilnehmer]{John Doe}{1236789}
+%%% Kommentar entfernen um zwei Teilnehmer:innen zu nennen  |
+% \TeilnehmerInB[Teilnehmerin]{Jane Appleseed}{1237890}
+%%% Kommentar entfernen um Leerzeile zwischen Verfasser:in  |
+%%% und Teilnehmer:in einzufügen                            |
+% \VerfasserInTeilnehmerInLeerzeile
+%%% über optionales Argument kann auch hier die Bezeichnung |
+%%% des Feldes auf der Titelseite angepasst werden          |
+\DatumVersuch{1. September 2023}
+%%% über optionales Argument kann auch hier die Bezeichnung |
+%%% des Feldes auf der Titelseite angepasst werden          |
+\DatumAbgabe{15. September 2023}
+%%% Kommentar entfernen um Leerzeile zwischen Daten         |
+%%% einzufügen                                              |
+% \DatumLeerzeile
+\BetreuerInA[Erstprüferin]{Prof. Dr.-Ing. Erika Musterfrau}
+\BetreuerInB[Zweitprüfer]{Prof. Dr.-Ing. Max Mustermann}
+%%% Kommentar entfernen um Leerzeile zwischen Betreuer:innen|
+%%% A und B einzufügen                                      |
+% \BetreuerInLeerzeile
+%%% Datumsangabe in Kopfzeile, mit "\VarDatumAbgabe" statt  |
+%%% "\today" wird das Datum verwendet, welches mit          |
+%%% "\DatumAbgabe{}" definiert wurde                        |
+\DatumVersion{\today}
+%%% --------------------------------------------------------+
+
+%%% nur hier angegebene Abschnitte werden dargestellt, aber Metadaten aller anderen werden mit einbezogen
+%%% ! Literaturverzeichnis zeigt nur Quellen der angegeben Abschnitte --> Nummerierung nicht final, später nochmals überprüfen!
+% \includeonly{1-Einleitung,3-Schluss}
+
+\begin{document}
+
+    %%% Einleitung ########################################
+    \pagenumbering{Roman}
+
+    %%% Titelblatt ========================================
+    \input{0a-Titelblatt}
+    \clearpage
+
+    %%% Erklärung zur ordnungsgemäßen Erstellung ==========
+    %%% Version HsH
+    %%% ! Text ggf. anpassen, wenn es sich um keinen "Bericht" (m) sondern bspw. eine "Haus-/Projektarbeit" (f) handelt
+    \thispagestyle{plain.scrheadings}
+    \section*{Eigenhändigkeitserklärung}
+    Ich versichere, dass ich meinen am \VarDatumAbgabe{} vorgelegten \VarUntertitel{} selbstständig verfasst und alle benutzten Hilfsmittel angegeben habe.\\[48pt]
+    Hannover, den \VarDatumAbgabe\\[40pt]
+    \begin{tabular}{@{}p{5cm}l}
+        \hline
+        \VarVerfasserIn, \VarVerfasserInMatNr
+    \end{tabular}
+    \clearpage
+
+    %%% Abkürzungen und Glossar (mit Paket glossaries) ====
+    \input{0b-Glossar}
+    \clearpage
+
+    %%% Symbolverzeichnis =================================
+    \input{0c-SymbolVZ}
+    \clearpage
+
+    %%% Inhaltsverzeichnis ================================
+    \pagestyle{plain.scrheadings}
+    \phantomsection
+    % \addcontentsline{toc}{section}{Inhaltsverzeichnis}
+    \tableofcontents
+    \clearpage
+
+    %%% Hauptteil #########################################
+    \pagestyle{scrheadings}
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+
+    \include{1-Einleitung}
+
+    \include{2-Hauptteil}
+
+    \include{3-Schluss}
+
+    \clearpage
+
+    %%% ggf. alle Einträge in Literaturverzeichnis überprüfen
+    % \nocite{*}
+
+    %%% Anhang ############################################
+    \appendix
+    \include{9-Anhang}
+
+    %%% Abbildungsverzeichnis =============================
+    \phantomsection
+    \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+    \listoffigures
+    \clearpage
+
+    %%% Tabellenverzeichnis ===============================
+    \phantomsection
+    \addcontentsline{toc}{section}{Tabellenverzeichnis}
+    \listoftables
+    \clearpage
+
+    %%% Literatur-/Quellenverzeichnis =====================
+    \phantomsection
+    \addcontentsline{toc}{section}{Literatur}
+    \printbibliography
+
+\end{document}

@@ -1,0 +1,50 @@
+\KOMAoptions{twoside = false}
+\begin{titlepage}
+    \begin{center}
+        \ifnumequal{\VarLogoHsH}{0}{\vspace*{-48pt}\includegraphics[width=0.2\textwidth]{hsh/HsH-Logo-grau}\\[32pt]}{}
+        \ifnumequal{\VarLogoHsH}{1}{\vspace*{-48pt}\includegraphics[width=0.2\textwidth]{hsh/HsH-Logo-F1}\\[32pt]}{}
+        \ifnumequal{\VarLogoHsH}{2}{\vspace*{-48pt}\includegraphics[width=0.2\textwidth]{hsh/HsH-Logo-F2}\\[32pt]}{}
+        \ifnumequal{\VarLogoHsH}{3}{\vspace*{-48pt}\includegraphics[width=0.2\textwidth]{hsh/HsH-Logo-F3}\\[32pt]}{}
+        \ifnumequal{\VarLogoHsH}{4}{\vspace*{-48pt}\includegraphics[width=0.2\textwidth]{hsh/HsH-Logo-F4}\\[32pt]}{}
+        \ifnumequal{\VarLogoHsH}{5}{\vspace*{-48pt}\includegraphics[width=0.2\textwidth]{hsh/HsH-Logo-F5}\\[32pt]}{}
+        \ifnumequal{\VarLogoHsH}{6}{\vspace*{-48pt}\includegraphics[width=0.2\textwidth]{hsh/HsH-Logo-gelb}\\[32pt]}{}
+        \textbf{\LARGE{Hochschule Hannover}}\\
+        \Large{University of Applied Sciences and Arts}\\[16pt]
+        \textbf{\large{\VarFakultaet}}\\
+        \large{\VarFachgebiet}\\[32pt]
+        \textbf{\Large{\VarArtDerArbeit}}\\
+        \large{im Studiengang \VarStudiengang}\\[20pt]
+        \textbf{\LARGE{\VarTitel}}\\[12pt]
+        \large{\VarUntertitel}\\[2pt]
+    \end{center}
+    
+    \begin{flushleft}
+        \begin{table}[b!]
+            \begin{tabular}{lll}
+                \textbf{\VarBezVerfasserIn} & & \VarVerfasserIn, \VarVerfasserInMatNr \\
+                & & \\
+                \iftoggle{DatenAlsZeitraum}{
+                    \textbf{\VarBezDatenZeitraum} & & \VarDatumBeginn{} -- \VarDatumAbgabe \\ % true
+                }{
+                    \textbf{\VarBezDatumBeginn} & & \VarDatumBeginn \\
+                    \iftoggle{DatumLeerzeile}{
+                        & & \\
+                    }{
+                        %
+                    }
+                    \textbf{\VarBezDatumAbgabe} & & \VarDatumAbgabe \\ % false
+                }
+                & & \\
+                \textbf{\VarBezBetreuerInA} & & \VarBetreuerInA \\
+                \iftoggle{BetreuerInLeerzeileAB}{
+                    & & \\
+                }{
+                    %
+                }
+                \textbf{\VarBezBetreuerInB} & & \VarBetreuerInB \\
+                \textbf{\VarBezBetreuerInC} & & \VarBetreuerInC \\
+            \end{tabular}
+        \end{table}
+    \end{flushleft}
+\end{titlepage}
+\KOMAoptions{twoside}

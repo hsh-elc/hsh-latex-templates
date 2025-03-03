@@ -1,0 +1,45 @@
+\chapter{Test-Kapitel}
+
+In \eqref{eq:test} sehen wir eine Gleichung.
+\begin{equation}
+    I_{out} = I_{in} \label{eq:test}
+\end{equation}
+
+\clearpage
+
+\section{Beispiele für Zitate, Formeln, Tabellen und Abbildungen}
+Erstmals wurde der Zusammenhang von elektrischer Spannung, elektrischem Strom und elektrischem Widerstand von Georg Simon Ohm beschrieben. \cite{Ohm.1827}
+
+\begin{equation}
+    U = R \cdot I
+\end{equation}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Beispieltabelle}
+    \label{tab:bsp-tabelle}
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{Formelzeichen} & \textbf{Name} & \textbf{SI-Einheit} \\
+        \midrule
+        $U$ & Elektrische Spannung & \si{\volt} \\
+        $R$ & Elektrischer Widerstand & \si{\ohm} \\
+        $I$ & Elektrischer Strom & \si{\ampere} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image} % dieses Bild ist Teil des mwe Pakets, welches auch ohne Befehl in der Präambel aufgerufen wird
+    \caption{Beispielbild}
+    \label{fig:bsp-bild}
+\end{figure}
+
+\clearpage
+
+\section{Blind Math Paper}
+\blindmathpaper % erzeugt Blindtext mit mathematischen Formeln, kann entfernt werden
+
+\section{Blind Document}
+\blinddocument % Erzeugt ein Dokument mit Blindtext, Überschriften und Listen; kann entfernt werden

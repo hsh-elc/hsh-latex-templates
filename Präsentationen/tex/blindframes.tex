@@ -1,0 +1,200 @@
+\section{Überschrift auf Ebene 1 (section)} % ================================\
+
+\subsection{Überschrift auf Ebene 2 (subsection)} % -------------------------\
+
+\begin{frame}
+    \frametitle{Folientitel}
+    \framesubtitle{Folienuntertitel}
+    \blindtext
+\end{frame}
+
+% ---------------------------------------------------------------------------/
+% ============================================================================/
+
+\section{Listen} % ===========================================================\
+
+\begin{frame}{Listen}{Beispiel einer Liste (itemize)}
+    \blinditemize
+\end{frame}
+
+\begin{frame}{Listen}{Beispiel einer Liste (3*itemize)}
+    \begin{itemize}
+        \item Erster Listenpunkt, Stufe 1
+        \begin{itemize}
+            \item Erster Listenpunkt, Stufe 2
+            \begin{itemize}
+                \item Erster Listenpunkt, Stufe 3
+                \item Zweiter Listenpunkt, Stufe 3
+            \end{itemize}
+            \item Zweiter Listenpunkt, Stufe 2
+        \end{itemize}
+        \item Zweiter Listenpunkt, Stufe 1
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Listen}{Beispiel einer Liste (enumerate)}
+    \blindenumerate
+\end{frame}
+
+\begin{frame}{Listen}{Beispiel einer Liste (3*enumerate)}
+    \begin{enumerate}
+        \item Erster Listenpunkt, Stufe 1
+        \begin{enumerate}
+            \item Erster Listenpunkt, Stufe 2
+            \begin{enumerate}
+                \item Erster Listenpunkt, Stufe 3
+                \item Zweiter Listenpunkt, Stufe 3
+            \end{enumerate}
+            \item Zweiter Listenpunkt, Stufe 2
+        \end{enumerate}
+        \item Zweiter Listenpunkt, Stufe 1
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Listen}{Beispiel einer Liste (description)}
+    \blinddescription
+\end{frame}
+
+\begin{frame}{Listen}{Beispiel einer Liste (3*description)}
+    \begin{description}
+        \item[Erster] Listenpunkt, Stufe 1
+        \begin{description}
+            \item[Erster] Listenpunkt, Stufe 2
+            \begin{description}
+                \item[Erster] Listenpunkt, Stufe 3
+                \item[Zweiter] Listenpunkt, Stufe 3
+            \end{description}
+            \item[Zweiter] Listenpunkt, Stufe 2
+        \end{description}
+        \item[Zweiter] Listenpunkt, Stufe 1
+    \end{description}
+\end{frame}
+
+% ============================================================================/
+
+\section{Blöcke} % ===========================================================\
+
+\begin{frame}{Blöcke}{Block, Alert-Block und Example-Block}
+    \begin{block}{Block}
+    Dies ist der Inhalt eines \verb"block" mit der Bezeichnung \verb"Block"
+    \end{block}
+
+    \begin{alertblock}{Wichtig}
+    Dies ist der Inhalt eines \verb"alertblock" mit der Bezeichnung \verb"Wichtig"
+    \end{alertblock}
+
+    \begin{exampleblock}{Beispiel}
+    Dies ist der Inhalt eines \verb"exampleblock" mit der Bezeichnung \verb"Beispiel"
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Blöcke}{Theorem, Proof und Example}
+    \begin{theorem}
+    Dies ist der Inhalt eines \verb"theorem" Blocks
+    \end{theorem}
+
+    \begin{proof}
+    Dies ist der Inhalt eines \verb"proof" Blocks
+    \end{proof}
+
+    \begin{example}
+    Dies ist der Inhalt eines \verb"example" Blocks
+    \end{example}
+\end{frame}
+
+% ============================================================================/
+
+\section{Zitate, Formeln, Tabellen und Abbildungen} % ========================\
+
+\begin{frame}{Beispiel eines Zitats und einer Formel}
+    Erstmals wurde der Zusammenhang von elektrischer Spannung, elektrischem Strom und elektrischem Widerstand von Georg Simon Ohm beschrieben. \cite{Ohm.1827}
+
+    \begin{equation}
+        U = R \cdot I
+    \end{equation}
+\end{frame}
+
+\begin{frame}{Beispiel einer Tabelle}
+    \begin{table}[htbp]
+        \centering
+        \caption{Beispieltabelle}
+        \label{tab:bsp-tabelle}
+        \begin{tabular}{lll}
+            \toprule
+            \textbf{Formelzeichen} & \textbf{Name} & \textbf{SI-Einheit} \\
+            \midrule
+            $U$ & Elektrische Spannung & \si{\volt} \\
+            $R$ & Elektrischer Widerstand & \si{\ohm} \\
+            $I$ & Elektrischer Strom & \si{\ampere} \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Beispiel einer Abbildung}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\textwidth]{example-image} % dieses Bild ist Teil des mwe Pakets, welches auch ohne Befehl in der Präambel aufgerufen wird
+        \caption{Beispielbild}
+        \label{fig:bsp-bild}
+    \end{figure}
+\end{frame}
+
+% ============================================================================/
+
+% Auf dieser Folie wird der wichtige Inhalt \alert{hervorgehoben}, um dies kenntlich zu machen.
+
+\section{Overlays} % =========================================================\
+
+\begin{frame}{Overlays}{Overlay Specifications}
+    Dies ist ein Beispieltext.
+
+    \begin{itemize}
+        \item<1-> Dieser Text ist sofort sichtbar.
+        \item<2-3> Dieser Text ist mit der zweiten und bis zur dritten Einblendung sichtbar.
+        \item<3> Dieser Text ist nur während der dritten Einblendung sichtbar.
+        \item<4-> Dieser Text ist mit der vierten Einblendung sichtbar.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Overlays}{\texttt{pause} Makro}
+    Auf dieser Folie \pause
+
+    wird der Text \pause
+
+    nach und nach \pause
+
+    eingeblendet.
+\end{frame}
+
+\begin{frame}{Overlays}{\texttt{alert} Makro}
+    Auf dieser Folie wird der wichtige Inhalt im zweiten Schritt \alert<2>{hervorgehoben}, um dies kenntlich zu machen.
+\end{frame}
+
+% ============================================================================/
+
+\section{Notizen} % ==========================================================\
+
+\begin{frame}[fragile]{Notizen}
+
+    Zu dieser Folie werden Notizen, welche nur in der \enquote{Referentenansicht} bzw. auf den zusätzlichen Notizfolien sichtbar sind, erstellt. Sichtbar ist dies nur im Quellcode bzw. wenn \verb|\setbeameroption{show only notes}| oder \verb|\setbeameroption{show notes on second screen}| verwendet wird.
+
+    \note[item]{Notiz 1}
+    \note[item]{Notiz 2}
+    \note{Notiz 3}
+
+\end{frame}
+
+\note[itemize]{
+    \item Notiz 1
+    \item Notiz 2
+}
+
+\note[enumerate]{
+    \item Notiz 3
+    \item Notiz 4
+}
+
+\note{Notiz 5}
+
+% ============================================================================/

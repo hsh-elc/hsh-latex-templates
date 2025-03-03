@@ -1,0 +1,230 @@
+%%% Präambel #######################################################
+\usepackage[utf8]{inputenc}                                         % Anpassung der Eingabekodierung
+\usepackage[T1]{fontenc}                                            % Standard-Paket für die Auswahl der Schriftarten Kodierung
+\usepackage[automark,headsepline]{scrlayer-scrpage}                 % weitere Anpassungen der Dokumentenklasse
+\usepackage[onehalfspacing]{setspace}                               % Zeilenabstand
+\usepackage[ngerman]{babel}                                         % Sprachpaket
+\usepackage{csquotes}                                               % verbesserter Syntax und Verhalten von Anführungszeichen (empfohlen für biblatex)
+\usepackage[style=ieee,sorting=none,giveninits=true,backend=biber]{biblatex} % Literaturverzeichnis und -verweise
+\DeclareFieldFormat{title}{\textsl{#1}}                             % Titel im Literaturverzeichnis in schräger statt kursiver Schrift
+\DeclareFieldFormat{booktitle}{\textsl{#1}}                         % s. o.
+\DeclareFieldFormat{booksubtitle}{\textsl{#1}}                      % s. o.
+\DeclareNameAlias{author}{family-given}                             % Nachnamen vor Vornamen anzeigen (vorher: last-first)
+\DeclareNameAlias{editor}{family-given}                             % s. o.
+\DeclareNameAlias{translator}{family-given}                         % s. o.
+\DeclareNameAlias{default}{family-given}                            % s. o.
+% \setcounter{biburllcpenalty}{7000}                                  % work-around für unschön umgebrochene URLs im Literaturverzeichnis
+% \setcounter{biburlucpenalty}{7000}                                  % s. o.
+% \setcounter{biburlnumpenalty}{7000}                                 % s. o.
+\usepackage{etoolbox}                                               % Erstellung eigener Dokumentoptionen
+\usepackage{lmodern}                                                % Schriftartenpaket
+\usepackage{amsmath,amsfonts,amssymb}                               % AMS Pakete
+\numberwithin{figure}{section}                                      % Abschnittsnummer in Abbildungsbeschriftung
+\numberwithin{table}{section}                                       % Abschnittsnummer in Tabellenbeschriftung
+\numberwithin{equation}{section}                                    % Abschnittsnummer in Formelbeschriftung
+\usepackage{siunitx}                                                % automatische und korrekte Schreibweise der SI Einheiten
+\sisetup{
+    locale=DE,                                                      % setzt \cdot statt \times in Exponentialschreibweise und output-decimal-marker = {,}
+    group-digits = integer,
+    group-separator = {.},                                          % Punkt als 1000er-Trennzeichen
+    group-minimum-digits = 4,                                       % schon ab 4 Stellen gruppieren
+    per-mode = symbol-or-fraction,                                  % per-mode wird in Abhängigkeit der Umgebung gesetzt, bei Fehlern: [per-mode=fraction] manuell setzen oder bei Drehzahlen: [per-mode=reciprocal]
+    % product-symbol = \cdot,                                         % Zeichen bei Produkten, default: \times (x)
+    list-final-separator = { und },
+    list-pair-separator = { und },
+    % list-units = single,                                          % Einheit nur beim letzten Listenelement; kann zu Missverständnissen führen
+    % range-units = single,                                         % Einheit nur bei der größeren Bereichsgrenze; kann zu Missverständnissen führen
+    range-phrase = { bis }
+}
+\DeclareSIUnit\dekade{Dekade}
+% \DeclareSIPrefix\kilo{k}{3}
+% \DeclareSIPower\quartic\tothefourth{4}                              % Bsp.: \unit{\kilogram\tothefourth} oder \unit{\quartic\metre}
+% \DeclareSIQualifier\peakpeak{PP}
+\usepackage[siunitx,EFvoltages]{circuitikz}                         % Option "EFvoltages" zeigt Spannungspfeile in Richtung des el. magn. Felds (also von + nach -)
+\usepackage{graphicx}                                               % Grafiken einbinden
+% \graphicspath{{img/}}                                               % Pfad für Grafiken (hier: Ordner "img" im Verzeichnis des Hauptdokuments)
+% \usepackage{svg}                                                    % SVG-Grafiken einbinden
+% \svgpath{svg/}                                                      % Pfad für SVG-Grafiken (hier: Ordner "svg" im Verzeichnis des Hauptdokuments)
+\usepackage{caption}                                                % Beschriftungen an Abbildungen, Tabellen, etc.
+\usepackage{subcaption}                                             % mehrere Abbildungen als eine darstellen
+\usepackage{rotating}                                               % gedrehte Grafiken und Tabellen
+\usepackage{xcolor}                                                 % Farbdefinitionen
+\definecolor{MATLABplot1}{HTML}{0072BD}                             % hier beispielhaft aktuelle Standardfarben in MATLAB Plots
+\definecolor{MATLABplot2}{HTML}{D95319}                             % https://de.mathworks.com/help/matlab/ref/plot.html#btzitot-Color
+\definecolor{MATLABplot3}{HTML}{EDB120}
+\definecolor{MATLABplot4}{HTML}{7E2F8E}
+\definecolor{MATLABplot5}{HTML}{77AC30}
+\definecolor{MATLABplot6}{HTML}{4DBEEE}
+\definecolor{MATLABplot7}{HTML}{A2142F}
+\usepackage{booktabs}                                               % Tabellen in Buchdruckqualität (horizontale Linien)
+% \usepackage{multirow}                                               % mehrzeilige Zellen
+% \usepackage{colortbl}                                               % farbige Zellen
+\usepackage{lastpage}                                               % Zähler für Angabe der letzten Seite
+\usepackage{listings}                                               % Code-Listings mit automatischem Syntax-Highlighting
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+% \definecolor{MATLABtext}{HTML}{000000}
+\definecolor{MATLABbackground}{HTML}{FFFFFF}
+\definecolor{MATLABkeywords}{HTML}{0000FF}
+\definecolor{MATLABstrings}{HTML}{A020F0}
+\definecolor{MATLABcomments}{HTML}{3C763D}
+\lstdefinestyle{MATLAB}{
+    backgroundcolor=\color{MATLABbackground},
+    commentstyle=\color{MATLABcomments},
+    keywordstyle=\color{MATLABkeywords},
+    stringstyle=\color{MATLABstrings},
+    % identifierstyle=\color{blue},% hier wird auch das e in bspw. 10e-3 erkannt
+    numberstyle=\tiny\color{codegray},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    frame=single
+}
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+}
+% \lstset{literate={~}{{\textasciitilde}}1} % wenn benötigt, in obere Liste einfügen
+% \lstset{literate={µ}{{$\mathrm{\mu}$}}1} % s. o.
+
+% ^^========= weitere Pakete über dieser Zeile einfügen ==========^^
+% * Paket hyperref (und bookmark) immer als letztes laden! Paket glossaries nach hyperref laden!
+\usepackage[ngerman]{hyperref}                                      % Hyperlinks in PDF Datei
+\usepackage{bookmark}                                               % Lesezeichen in PDF Datei
+% "You must load the hyperref package before the glossaries package to ensure the hyperlinks work." [S. 124, glossaries-user.pdf]
+\usepackage[acronym,nopostdot,nonumberlist,toc]{glossaries}         % Glossar und Abkürzungen; für Eintrag im Inhaltsverzeichnis Option "toc" hinzufügen; "automake" "nomain" ?
+% Änderung des Darstellungsformats und Berechnung des breitesten Eintrags: siehe "User Manual for glossaries.sty v4.46", Seite 222
+\renewcommand{\glossarypreamble}{%
+    \glsfindwidesttoplevelname[\currentglossary]}
+\setglossarystyle{alttree}
+% Code für Änderung des Darstellungsformats und Berechnung des breitesten Eintrags bis hier
+\makeglossaries
+% oder:
+% \usepackage[nopostdot,nonumberlist]{glossaries}
+% \usepackage[nohyperlinks, printonlyused]{acronym}
+% Formatierung: (Bsp., weitere unter: https://www.dickimaw-books.com/gallery/glossaries-styles/)
+% \usepackage{glossary-longragged}
+% \setglossarystyle{longragged}
+% https://tex.stackexchange.com/questions/415275/flush-glossaries-super-style-to-left
+
+% Anpassung der automatischen Bezeichnungen ========================
+\renewcaptionname{ngerman}\sectionautorefname{Abschnitt}
+\renewcaptionname{ngerman}\subsectionautorefname{Abschnitt}
+\renewcaptionname{ngerman}\subsubsectionautorefname{Abschnitt}
+
+% Anpassung der Kopf- und Fußzeilen ================================
+\clearpairofpagestyles
+\lohead{\normalfont \VarTitelueberschrift\\\VarTitel}
+\rohead{\normalfont \VarVerfasserIn\\\VarDatumVersion}
+\cfoot[\pagemark]{\normalfont Seite \textbf{\thepage} von \textbf{\pageref{LastPage}}}
+\pagestyle{scrheadings}
+
+% Anpassung der PDF Eigenschaften ==================================
+\AtEndPreamble{
+    \hypersetup{
+        pdftitle    = {\VarTitel},
+        pdfsubject  = {\VarUntertitel},
+        pdfauthor   = {\VarVerfasserIn},
+        % pdfkeywords = {Stichwort1, Stichwort2 ...},
+        % pdfdisplaydoctitle = true,                                      % Dokumenttitel statt Dateiname im PDF Viewer anzeigen
+        % pdfpagelayout=TwoPageRight,                                     % Voreinstellung Ansicht: "TwoColumnRight" kontinuierliches Scrollen, "TwoPageRight" seitenweises Scrollen
+        bookmarksnumbered = true,                                       % Abschnittsnummerierung in Lesezeichen einbeziehen
+        bookmarksopen = true,                                           % Lesezeichen aufgeklappt anzeigen
+        % colorlinks = true,                                              % Links farbig darstellen
+        hidelinks,                                                      % Textfarbe von Links: schwarz
+        unicode=true
+    }
+}
+
+% neue Befehle für Dokumentfelder ==================================
+\def\VarLogoHsH{7}
+\newcommand{\LogoHsH}[1]{
+    \def\VarLogoHsH{#1}
+}
+\newcommand{\Fakultaet}[1]{
+    \def\VarFakultaet{#1}
+}
+\newcommand{\Fachgebiet}[1]{
+    \def\VarFachgebiet{#1}
+}
+\newcommand{\Titelueberschrift}[1]{
+    \def\VarTitelueberschrift{#1}
+}
+\newcommand{\Titel}[1]{
+    \def\VarTitel{#1}
+}
+\newcommand{\Untertitel}[1]{
+    \def\VarUntertitel{#1}
+}
+\newcommand{\VerfasserIn}[3][Verfasser:in]{
+    \def\VarBezVerfasserIn{#1}%
+    \def\VarVerfasserIn{#2}%
+    \def\VarVerfasserInMatNr{#3}
+}
+\newcommand{\TeilnehmerIn}[3][Teilnehmer:in]{
+    \def\VarBezTeilnehmerIn{#1}%
+    \def\VarTeilnehmerIn{#2}%
+    \def\VarTeilnehmerInMatNr{#3}
+}
+\newcommand{\TeilnehmerInB}[3][Teilnehmer:in]{
+    \def\VarBezTeilnehmerInB{#1}%
+    \def\VarTeilnehmerInB{#2}%
+    \def\VarTeilnehmerInMatNrB{#3}%
+    \toggletrue{ZweiTeilnehmerInnen}
+}
+\newcommand{\DatumVersuch}[2][Versuchsdurchführung]{
+    \def\VarBezDatumVersuch{#1}%
+    \def\VarDatumVersuch{#2}
+}
+\newcommand{\DatumAbgabe}[2][Abgabe des Berichts]{
+    \def\VarBezDatumAbgabe{#1}%
+    \def\VarDatumAbgabe{#2}
+}
+\newcommand{\BetreuerInA}[2][Betreuer:in]{
+    \def\VarBetreuerInA{#2}%
+    \def\VarBezBetreuerInA{#1}
+}
+\newcommand{\BetreuerInB}[2][]{
+    \def\VarBetreuerInB{#2}%
+    \def\VarBezBetreuerInB{#1}
+}
+\newcommand{\DatumVersion}[1]{
+    \def\VarDatumVersion{#1}
+}
+\newtoggle{VerfasserInTeilnehmerInLeerzeile}
+\newcommand{\VerfasserInTeilnehmerInLeerzeile}{
+    \toggletrue{VerfasserInTeilnehmerInLeerzeile}
+}
+\newtoggle{ZweiTeilnehmerInnen}
+\newtoggle{DatumLeerzeile}
+\newcommand{\DatumLeerzeile}{
+    \toggletrue{DatumLeerzeile}
+}
+\newtoggle{BetreuerInLeerzeile}
+\newcommand{\BetreuerInLeerzeile}{
+    \toggletrue{BetreuerInLeerzeile}
+}
+
+
+% [alle] Indizes Steil Stellen (von Cube, HsH-Forum)
+% https://betech-hsh.de/viewtopic.php?f=119&t=756
+\def\subinrm#1{\sb{\mathrm{#1}}}
+{\catcode`\_=13 \global\let_=\subinrm}
+\mathcode`_="8000
+% Macros definieren:
+\def\upsubscripts{\catcode`\_=12 }
+\def\normalsubscripts{\catcode`\_=8 }
+% Macro benutzen:
+\upsubscripts %Indizes Steil

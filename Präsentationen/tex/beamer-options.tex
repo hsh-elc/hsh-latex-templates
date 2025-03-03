@@ -1,0 +1,225 @@
+\usefonttheme[onlymath]{serif} % https://tex.stackexchange.com/questions/429199/how-to-properly-typeset-e-mathrmk-in-beamer
+
+%%% Seitenränder
+\setbeamersize{text margin left=4ex}
+\setbeamersize{text margin right=4ex}
+
+%%% Auswahl Fakultätstext
+\ifnumequal{\VarHsHFak}{1}{\institute[Fak. I]{Fakultät I\\Elektro- und Informationstechnik}}{}
+\ifnumequal{\VarHsHFak}{2}{\institute[Fak. II]{Fakultät II\\Maschinenbau und Bioverfahrenstechnik}}{}
+\ifnumequal{\VarHsHFak}{3}{\institute[Fak. III]{Fakultät III\\Medien, Information und Design}}{}
+\ifnumequal{\VarHsHFak}{4}{\institute[Fak. IV]{Fakultät IV\\Wirtschaft und Informatik}}{}
+\ifnumequal{\VarHsHFak}{5}{\institute[Fak. V]{Fakultät V\\Diakonie, Gesundheit und Soziales}}{}
+
+%%% Definition Farbvariable
+\ifnumequal{\VarHsHFak}{0}{\def\VarHsHFarbe{HsH-grau}}{}
+\ifnumequal{\VarHsHFak}{1}{\def\VarHsHFarbe{HsH-F1}}{}
+\ifnumequal{\VarHsHFak}{2}{\def\VarHsHFarbe{HsH-F2}}{}
+\ifnumequal{\VarHsHFak}{3}{\def\VarHsHFarbe{HsH-F3}}{}
+\ifnumequal{\VarHsHFak}{4}{\def\VarHsHFarbe{HsH-F4}}{}
+\ifnumequal{\VarHsHFak}{5}{\def\VarHsHFarbe{HsH-F5}}{}
+\ifnumequal{\VarHsHFak}{6}{\def\VarHsHFarbe{HsH-gelb}}{}
+
+%%% Farbpaletten
+\setbeamercolor{palette primary}{bg=\VarHsHFarbe,fg=black}
+\setbeamercolor{palette secondary}{bg=\VarHsHFarbe,fg=black}
+\setbeamercolor{palette tertiary}{bg=\VarHsHFarbe,fg=black}
+\setbeamercolor{palette quaternary}{bg=\VarHsHFarbe,fg=black}
+\setbeamercolor{structure}{fg=\VarHsHFarbe} % itemize, enumerate, etc
+
+%%% Titelseite
+\setbeamercolor{titlelike}{fg=black}
+\setbeamerfont{subtitle}{series=\slshape}
+\setbeamercolor{author}{fg=black}
+\setbeamerfont{author}{series=\normalfont,size=\scriptsize}
+\setbeamercolor{date}{fg=black}
+\setbeamerfont{institute}{series=\slshape,size=\tiny}
+\ifnumequal{\VarHsHFak}{0}{\titlegraphic{\includegraphics[width=\columnwidth]{hsh/HsH-Logo-grau.pdf}}}{}
+\ifnumequal{\VarHsHFak}{1}{\titlegraphic{\includegraphics[width=\columnwidth]{hsh/HsH-Logo-F1.pdf}}}{}
+\ifnumequal{\VarHsHFak}{2}{\titlegraphic{\includegraphics[width=\columnwidth]{hsh/HsH-Logo-F2.pdf}}}{}
+\ifnumequal{\VarHsHFak}{3}{\titlegraphic{\includegraphics[width=\columnwidth]{hsh/HsH-Logo-F3.pdf}}}{}
+\ifnumequal{\VarHsHFak}{4}{\titlegraphic{\includegraphics[width=\columnwidth]{hsh/HsH-Logo-F4.pdf}}}{}
+\ifnumequal{\VarHsHFak}{5}{\titlegraphic{\includegraphics[width=\columnwidth]{hsh/HsH-Logo-F5.pdf}}}{}
+\ifnumequal{\VarHsHFak}{6}{\titlegraphic{\includegraphics[width=\columnwidth]{hsh/HsH-Logo-gelb.pdf}}}{}
+\makeatletter
+\@ifclasswith{beamer}{aspectratio=169}{
+%%% begin of titlepage with aspectratio=169 --------------------------------------------------------------------------------
+\defbeamertemplate*{title page}{customized}[1][]
+{
+\begin{columns}
+\begin{column}{0.15\textwidth}
+\begin{flushleft}
+\ifnumequal{\VarHsHFak}{0}{\includegraphics[width=0.85\textwidth]{hsh/HsH-Wortmarke.pdf}}{}
+\ifnumequal{\VarHsHFak}{1}{\includegraphics[width=0.85\textwidth]{hsh/HsH-Wortmarke-F1.pdf}}{}
+\ifnumequal{\VarHsHFak}{2}{\includegraphics[width=0.85\textwidth]{hsh/HsH-Wortmarke-F2.pdf}}{}
+\ifnumequal{\VarHsHFak}{3}{\includegraphics[width=0.85\textwidth]{hsh/HsH-Wortmarke-F3.pdf}}{}
+\ifnumequal{\VarHsHFak}{4}{\includegraphics[width=0.85\textwidth]{hsh/HsH-Wortmarke-F4.pdf}}{}
+\ifnumequal{\VarHsHFak}{5}{\includegraphics[width=0.85\textwidth]{hsh/HsH-Wortmarke-F5.pdf}}{}
+\ifnumequal{\VarHsHFak}{6}{\includegraphics[width=0.85\textwidth]{hsh/HsH-Wortmarke.pdf}}{}
+\end{flushleft}
+\end{column}
+\begin{column}{0.85\textwidth}
+% dummy column
+\end{column}
+\end{columns}% ! Bei mehrzeiligen Titel/Untertiteln HIER ggf. Abstand anpassen: bspw. \vfill durch negativen \vspace*{} ersetzen oder Betrag des negativen \vspace*{} erhöhen!
+\ifnumequal{\VarHsHFak}{0}{\vfill}{}
+\ifnumequal{\VarHsHFak}{1}{\vspace*{-32pt}}{}
+\ifnumequal{\VarHsHFak}{2}{\vspace*{-32pt}}{}
+\ifnumequal{\VarHsHFak}{3}{\vspace*{-24pt}}{}
+\ifnumequal{\VarHsHFak}{4}{\vspace*{-24pt}}{}
+\ifnumequal{\VarHsHFak}{5}{\vspace*{-24pt}}{}
+\ifnumequal{\VarHsHFak}{6}{\vfill}{}
+\begin{columns}[b]
+\begin{column}{0.8\textwidth}
+\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+% \vspace*{8pt}
+\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+\bigskip
+\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor,~\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
+\end{column}
+\begin{column}{0.2\textwidth}
+\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+\end{column}
+\end{columns}
+}
+%%% end of titlepage with aspectratio=169 ----------------------------------------------------------------------------------
+}{
+%%% begin of titlepage with aspectratio=43 (default) -----------------------------------------------------------------------
+\defbeamertemplate*{title page}{customized}[1][]
+{
+\begin{columns}
+\begin{column}{0.2\textwidth}
+{\tiny
+\textbf{HOCHSCHULE\\HANNOVER}\\
+UNIVERSITY OF\\APPLIED SCIENCES\\AND ARTS\\\ifnumequal{\VarHsHFak}{0}{}{--\\}
+\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
+}
+\end{column}
+\begin{column}{0.8\textwidth}
+% dummy column
+\end{column}
+\end{columns}
+\vfill% ! Bei mehrzeiligen Titel/Untertiteln HIER ggf. Abstand anpassen: bspw. \vfill durch negativen \vspace*{} ersetzen!
+\begin{columns}[b]
+\begin{column}{0.75\textwidth}
+\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+\vspace*{8pt}
+\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+\bigskip
+\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor,~\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
+\end{column}
+\begin{column}{0.25\textwidth}
+\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+\end{column}
+\end{columns}
+}
+%%% end of titlepage with aspectratio=43 (default) -------------------------------------------------------------------------
+}
+\makeatother
+
+%%% Folien-Titel
+\setbeamercolor{frametitle}{fg=black}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\normalsize}
+
+%%% Fußzeile
+\setbeamertemplate{navigation  symbols}{}
+\setbeamercolor{author in head/foot}{fg=black, bg=white}
+\setbeamercolor{title in head/foot}{fg=black, bg=white}
+\makeatletter
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \centering
+    {\color{\VarHsHFarbe}\rule{0.975\paperwidth}{2pt}}
+    \hbox{%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=2ex,left]{author in head/foot}%
+            \usebeamerfont{author in head/foot}\hspace*{2ex}\textbf{Hochschule Hannover}\hspace*{0.5ex} \insertshortauthor
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=2ex,center]{title in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshorttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=2ex,right]{page number in head/foot}%
+            \usebeamerfont{page number in head/foot}Folie \insertframenumber{} / \insertmainframenumber\hspace*{2ex}
+        \end{beamercolorbox}}%
+        \vskip0pt%
+}
+% \setbeamertemplate{sidebar \beamer@sidebarside}{}
+\defbeamertemplate{footline}{page number appendix}
+{
+    \leavevmode%
+    \centering
+    {\color{\VarHsHFarbe}\rule{0.975\paperwidth}{2pt}}
+    \hbox{%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=2ex,left]{author in head/foot}%
+            \usebeamerfont{author in head/foot}\hspace*{2ex}\insertshortauthor
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=2ex,center]{subtitle in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshorttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=2ex,right]{page number in head/foot}%
+            \usebeamerfont{page number in head/foot}Anhang \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+        \end{beamercolorbox}}%
+        \vskip0pt%
+    }
+\g@addto@macro\appendix{%
+    \setbeamertemplate{footline}[page number appendix]%
+}
+% https://tex.stackexchange.com/questions/303717/latex-beamer-pagenumbering-appendix
+\defbeameroption{show only notes}[]%
+{
+  \beamer@notestrue
+  \beamer@notesnormalsfalse
+}
+% https://tex.stackexchange.com/questions/457348/references-when-using-only-notes-in-beamer
+\makeatother
+
+%%% Inhalts-Folien
+\setbeamercolor{section in toc}{fg=black}
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}[square]
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Inhalt}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%%% Literaturverzeichnis
+% \setbeamertemplate{bibliography item}[text] % funktioniert nur bei Zitierstilen mit Label (bspw. numeric und alphabetic) (siehe auch https://tex.stackexchange.com/questions/585635/beamer-biblatex-authoryear-causes-problem-with-insertbiblabel)
+%%% bei nicht Label baiserten Zitierstilen nachfolgende Definiton verwenden und obenstehende auskommentieren
+\setbeamertemplate{bibliography item}{}
+
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+% \setbeamerfont{bibliography item}{size=\tiny}
+% \setbeamerfont{bibliography entry title}{size=\tiny}
+% \setbeamerfont{bibliography entry author}{size=\tiny}
+% \setbeamerfont{bibliography entry location}{size=\tiny}
+% \setbeamerfont{bibliography entry note}{size=\tiny}
+
+%%% Blöcke
+\setbeamercolor{block title}{fg=white, bg=\VarHsHFarbe!75!white}
+\setbeamercolor{block body}{bg=\VarHsHFarbe!25!white}
+\setbeamerfont{block title alerted}{series=\bfseries}
+\setbeamercolor{block title alerted}{fg=white, bg=Red!75!white}
+\setbeamercolor{block body alerted}{bg=Red!25!white}
+\setbeamerfont{block title example}{shape=\itshape}
+\setbeamercolor{block title example}{fg=white, bg=Green!75!white}
+\setbeamercolor{block body example}{bg=Green!25!white}
+
+\setbeamercolor{qed symbol}{fg=black}
+
+% \setbeamercolor{description item}{fg=\VarHsHFarbe}
+\setbeamersize{description width=4.25ex}
+
+% \setbeamercolor{caption name}{fg=\VarHsHFarbe}
+
+%%% Färbung der Aufzählungszeichen als "action"
+% https://tex.stackexchange.com/questions/14319/beamer-change-individual-bullet-color-in-itemize-list
+\newenvironment{proenv}{\only{\setbeamercolor{local structure}{fg=green}}}{}
+\newenvironment{conenv}{\only{\setbeamercolor{local structure}{fg=red}}}{}
+\newenvironment{neutralenv}{\only{\setbeamercolor{local structure}{fg=\VarHsHFarbe}}}{}
+% funktioniert mit Änderungen der "palette" bzw. "structure" Farben

@@ -1,0 +1,66 @@
+\documentclass[ngerman,hyperref={bookmarks},xcolor={table,dvipsnames},aspectratio=169,usepdftitle=false]{beamer}% [handout] um alles direkt "aufzublenden"
+
+\input{tex/packages-com}
+\input{tex/new-commands}
+\input{hsh/HsH-Farben}
+\HsHFak{6} % Zahl im Argument des Befehls entspricht Fakultät:
+%%% 0 -> keine Fakultät (grau)
+%%% 1 -> Fak. I, usw.
+%%% 6 -> IT, Language Center, Servicezentrum Beratung, Servicezentrum Lehre, ... (gelb)
+%%% * für den Fall, dass \HsHFak{0} oder \HsHFak{6} verwendet wird, muss mit nachfolgenden Befehl die Organisationseinheit manuell definiert werden
+% \institute[ELC]{Servicezentrum Lehre} % ! Auskommentieren/nicht verwenden, wenn \HsHFak{} 1...5 oder aspectratio=169 verwendet wird!
+\input{tex/beamer-options}
+
+\addbibresource{bib/literature.bib}
+\renewcommand*{\bibfont}{\footnotesize} % * ggf. \scriptsize, an Platzbedarf anpassen
+
+\title[\LaTeX{} Beamer Vorlage -- Ein Grundgerüst]{\LaTeX{} Beamer Vorlage}
+\subtitle{Ein Grundgerüst}
+\author[Z2 -- ELC]{Z2 -- Servicezentrum Lehre}
+\date{\today}
+% \institute[short]{full} % wird in 'beamer-options.tex' bzw. weiter oben gesetzt
+\subject{Ein Grundgerüst} % nur für PDF Dateiinformationen
+\keywords{LaTeX, Vorlage, Präsentation} % nur für PDF Dateiinformationen
+\hypersetup{
+    colorlinks  = true,
+    linkcolor   = black,
+    urlcolor    = cyan,
+    pdftitle    = {\LaTeX{} Beamer Vorlage},
+    pdfauthor   = {Z2 -- Servicezentrum Lehre (Hochschule Hannover)}%,
+    % pdfsubject  = {Ein Grundgerüst}, % wird mit \subject{} bereits gesetzt
+    % pdfkeywords = {Stichwort1, Stichwort2 ...} % wird mit \keywords{} bereits gesetzt
+}
+
+% \setbeameroption{show notes}% Folien und Notizen
+% \setbeameroption{show only notes}% nur Notizen
+% \setbeameroption{show notes on second screen}% Folien und Notizen nebeneinander, benötigt Paket pgfpages, lädt es aber selbst
+
+\usepackage{blindtext} % TODO: ggf. deaktivieren; wird für "blindframes.tex" benötigt
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Inhalt}
+    \tableofcontents
+\end{frame}
+
+\input{tex/blindframes} % TODO: durch eigene Folien bzw. eigenen Inhalt ersetzen
+
+% \begin{frame}[allowframebreaks]{Literatur und Quellen}
+\begin{frame}[t]{Literatur und Quellen}
+    \printbibliography%[title=Literatur und Quellen]
+\end{frame}
+
+% \appendix
+
+% \begin{frame}[plain]
+%     \begin{center}
+%         {\huge \textbf{Anhang}}
+%     \end{center}
+% \end{frame}
+
+\end{document}

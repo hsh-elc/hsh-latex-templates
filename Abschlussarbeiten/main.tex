@@ -1,0 +1,178 @@
+\documentclass[
+a4paper,
+12pt,
+parskip=half,
+numbers=noendperiod,
+DIV=15,% ! wenn verändert komplette Arbeit überprüfen!
+% BCOR=6mm,% Bindekorrektur
+% areasetadvanced,% Bindekorrektur verwenden ohne typearea zu verkleinern
+% headinclude,
+% headheight=36pt,
+toc=chapterentrywithdots
+]{scrbook}
+% \areaset[12mm]{\textwidth}{\textheight} % s. o., typearea für Bindekorrektur verschieben
+
+%%% Präambel ------------------------------------------+
+%%% common packages                                    |
+\input{tex/prae-com}
+%%% packages for development                           |
+\input{tex/prae-dev}
+%%% packages with draft settings                       |
+% \input{tex/prae-draft}
+%%% packages with final settings/for final compilation |
+% \input{tex/prae-final}
+%%% ---------------------------------------------------+
+
+%%% manuelle Anpassungen der Worttrennungen
+\input{tex/w-sep}
+
+%%% Glossar bzw. Akronyme einbinden
+\input{gls/gls}
+\input{gls/acr}
+
+%%% Literatur-Liste einbinden - aus Kompatibilitätsgründen mit LaTeX Workshop (VS Code Erweiterung) hier
+\addbibresource{bib/Literatur.bib}
+
+%%% hier Titel, Namen, Daten definieren --------------------+
+%%% nachfolgenden Kommentar entfernen um HsH Logo auf       |
+%%% Titelseite einzufügen; Zahl im Argument des Befehls     |
+%%% entspricht Fakultät: 0 -> grau, 1 -> Fak. I, usw.       |
+\LogoHsH{1}
+\Fakultaet{Fakultät I -- Elektro- und Informationstechnik}
+\Fachgebiet{Fachgebiet Regelungstechnik und Mechatronik}
+\ArtDerArbeit{Masterarbeit}
+\Studiengang{Elektrische Energiesysteme und Elektromobilität}
+\Titel{Reglerentwurf und Simulation für die Geschwindigkeitsregelanlage eines Elektrokleinfahrzeugs}
+\Untertitel{im Rahmen des Forschungsprojekts XY}
+% \Untertitel{im Zusammenarbeit mit\\[4pt]\includegraphics[width=0.1\textwidth]{example-image}}
+\VerfasserIn[Verfasserin]{Jane Doe}{1234567}
+%%% über optionales Argument kann auch hier die Bezeichnung |
+%%% des Feldes auf der Titelseite angepasst werden          |
+\DatumBeginn[Bearbeitungsbeginn]{1. September 2023}
+%%% über optionales Argument kann auch hier die Bezeichnung |
+%%% des Feldes auf der Titelseite angepasst werden          |
+\DatumAbgabe[Abgabe der Arbeit]{29. Februar 2024}
+%%% Kommentar entfernen um Leerzeile zwischen Daten         |
+%%% einzufügen                                              |
+% \DatumLeerzeile
+%%% Kommentar entfernen um Daten als Zeitraum anzugeben;    |
+%%% über optionales Argument kann auch hier die Bezeichnung |
+%%% des Feldes auf der Titelseite angepasst werden          |
+\DatenAlsZeitraum[Bearbeitungszeitraum]
+\BetreuerInA[Erstprüferin]{Prof. Dr.-Ing. Erika Musterfrau}
+\BetreuerInB[Zweitprüfer]{Prof. Dr.-Ing. Max Mustermann}
+\BetreuerInC[Firmenbetreuerin]{Frieda Musterfrau, M.Sc.}
+%%% Kommentar entfernen um Leerzeile zwischen Betreuer:innen|
+%%% A und B einzufügen                                      |
+% \BetreuerInLeerzeileAB
+%%% Kommentar entfernen um Leerzeile zwischen Betreuer:innen|
+%%% B und C einzufügen                                      |
+% \BetreuerInLeerzeileBC
+%%% Datumsangabe in Kopfzeile, mit "\VarDatumAbgabe" statt  |
+%%% "\today" wird das Datum verwendet, welches mit          |
+%%% "\DatumAbgabe{}" definiert wurde                        |
+\DatumVersion{\today}
+%%% --------------------------------------------------------+
+
+%%% nur hier angegebene Kapitel werden dargestellt, aber Metadaten aller anderen werden mit einbezogen
+%%% ! Literaturverzeichnis zeigt nur Quellen der angegeben Kapitel --> Nummerierung nicht final, später nochmals überprüfen!
+% \includeonly{1-Einleitung,3-Schluss}
+
+\begin{document}
+
+    %%% Titelblatt (Cover) ================================ % fehlt dann bei gebundener Ausgabe
+
+    %%% Schmutztitel ======================================
+    % \extratitle{Schmutztitel}
+
+    %%% Titelrückseite ====================================
+    % \frontispiece{Frontispiz}
+
+    %%% Vorwort ###########################################
+    \frontmatter
+    \pagenumbering{Roman}
+
+    %%% Titelblatt (keine Bilder, etc.) ===================
+    \input{0a-Titelblatt}
+    \cleardoublepage
+
+    %%% Erklärung zur ordnungsgemäßen Erstellung ==========
+    %%% alternativ: gedrucktes Formular der HsH nutzen und beifügen
+    %%% Version HsH
+    \thispagestyle{plain.scrheadings}
+    \section*{Eigenhändigkeitserklärung}
+    Ich versichere, dass ich meine am \VarDatumAbgabe{} vorgelegte \VarArtDerArbeit{} selbstständig verfasst und alle benutzten Hilfsmittel angegeben habe.\\[48pt]
+    Hannover, den \VarDatumAbgabe\\[40pt]
+    \begin{tabular}{@{}p{5cm}l}
+        \hline
+        \VarVerfasserIn, \VarVerfasserInMatNr
+    \end{tabular}
+    \clearpage
+
+    %%% Danksagung (oder: Vorwort und Dank) ===============
+    \input{0b-Vorwort}
+    \cleardoublepage
+
+    %%% Kurzfassung/Abstract ==============================
+    \input{0c-Kurzfassung}
+    \cleardoublepage
+
+    %%% Abkürzungen und Glossar (mit Paket glossaries) ====
+    \input{0d-Glossar}
+    \cleardoublepage
+
+    %%% Symbolverzeichnis =================================
+    \input{0e-SymbolVZ}
+    \cleardoublepage
+
+    %%% Inhaltsverzeichnis ================================
+    \pagestyle{plain.scrheadings}
+    \phantomsection
+    % \addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
+    \tableofcontents
+    \cleardoublepage
+
+    %%% Hauptteil #########################################
+    \mainmatter
+    \pagestyle{scrheadings}
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+
+    \include{1-Einleitung}
+
+    \include{2-Hauptteil}
+
+    \include{3-Schluss}
+
+    \cleardoublepage
+
+    %%% ggf. alle Einträge in Literaturverzeichnis überprüfen
+    % \nocite{*}
+
+    %%% Anhang ############################################
+    \appendix % geht nur vor \backmatter
+    \include{9-Anhang}
+
+    %%% Verzeichnisse #####################################
+    \backmatter
+
+    %%% Abbildungsverzeichnis =============================
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+    \listoffigures
+    \cleardoublepage
+
+    %%% Tabellenverzeichnis ===============================
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    \listoftables
+    \cleardoublepage
+
+    %%% Literatur-/Quellenverzeichnis =====================
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Literatur}
+    \printbibliography
+
+    %%% Index/Stichwortverzeichnis ========================
+
+\end{document}

@@ -1,0 +1,66 @@
+\chapter{Hauptteil}
+\label{chap:Hauptteil}
+
+\section{Beispiele für Zitate, Formeln, Tabellen und Abbildungen}
+
+Erstmals wurde der Zusammenhang von elektrischer Spannung, elektrischem Strom und elektrischem Widerstand von Georg Simon Ohm beschrieben. \cite{Ohm.1827}
+
+\begin{equation}
+    U = R \cdot I
+\end{equation}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Beispieltabelle}
+    \label{tab:bsp-tabelle}
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{Formelzeichen} & \textbf{Name} & \textbf{SI-Einheit} \\
+        \midrule
+        $U$ & Elektrische Spannung & \si{\volt} \\
+        $R$ & Elektrischer Widerstand & \si{\ohm} \\
+        $I$ & Elektrischer Strom & \si{\ampere} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image} % dieses Bild ist Teil des mwe Pakets, welches auch ohne Befehl in der Präambel aufgerufen wird
+    \caption{Beispielbild}
+    \label{fig:bsp-bild}
+\end{figure}
+
+\section{Beispiele für die Nutzung von Abkürzungen und Glossareinträgen}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Befehle und Ausgaben für Paket \texttt{glossaries}}
+    \label{tab:befehle-ausgaben-glossaries}
+    \begin{tabular}{lll}
+        \toprule
+        Befehl & Kurzbefehl & Ausgabe \\
+        \midrule
+        \verb|\acrfull{epwg}| & \verb|\acf{epwg}| & \acrfull{epwg} \\
+        \verb|\acrlong{epwg}| & \verb|\acl{epwg}| & \acrlong{epwg} \\
+        \verb|\acrshort{epwg}| & \verb|\acs{epwg}| & \acrshort{epwg} \\
+        \verb|\acrfullpl{epwg}| & \verb|\acfp{epwg}| & \acrfullpl{epwg} \\
+        \verb|\acrlongpl{epwg}| & \verb|\aclp{epwg}| & \acrlongpl{epwg} \\
+        \verb|\acrshortpl{epwg}| & \verb|\acspl{epwg}| & \acrshortpl{epwg} \\
+        \verb|\Acrfull{epwg}| & \verb|\Acf{epwg}| & \Acrfull{epwg} \\
+        \verb|\Acrlong{epwg}| & \verb|\Acl{epwg}| & \Acrlong{epwg} \\
+        \verb|\Acrshort{epwg}| & \verb|\Acs{epwg}| & \Acrshort{epwg} \\
+        \verb|\Acrfullpl{epwg}| & \verb|\Acfp{epwg}| & \Acrfullpl{epwg} \\
+        \verb|\Acrlongpl{epwg}| & \verb|\Aclp{epwg}| & \Acrlongpl{epwg} \\
+        \verb|\Acrshortpl{epwg}| & \verb|\Acspl{epwg}| & \Acrshortpl{epwg} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Erste Verwendung von \verb|\gls{lms}| führt zu: \gls{lms}
+
+Nächste Verwendung von \verb|\gls{lms}| führt zu: \gls{lms}
+
+Wird ein im Glossar definierter Begriff mit bspw. \verb|\gls{moodle}| verwendet, führt dies zu folgender Ausgabe: \gls{moodle}
+
+\clearpage

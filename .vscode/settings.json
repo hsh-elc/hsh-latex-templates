@@ -1,0 +1,22 @@
+{
+    "cSpell.language": "de,de-DE,en-US,en-GB,en",   // Auswahl der Sprachen für Code Spell Checker
+    "editor.bracketPairColorization.enabled": true, // Färbung der verschachtelten Klammerpaare
+    "editor.guides.bracketPairs": "active",         // Hilfslinien zwischen mehrzeiligen Klammerinhalten
+    "editor.wordWrap": "on",                        // Zeilenumbruch im Editor als Standard
+    "explorer.autoReveal": false,                   // Deaktivierung autom. Aufklappen der Verzeichnisse
+    "explorer.copyRelativePathSeparator": "/",      // Trennzeichen in kopierten Pfaden
+    "files.associations": {
+        "*.tikz": "latex"                           // Zuordnung von Dateiendungen als LaTeX Syntax
+    },
+    "[latex]": {
+        "files.encoding": "utf8"                    // Standardcodierung für LaTeX Dateien (.tex)
+    },
+    "files.insertFinalNewline": true,               // automatisches Einfügen einer Leerzeile am Dateiende (beim Speichern)
+    "files.trimTrailingWhitespace": true,           // automatisches Kürzen von Leerzeichen am Zeilenende (beim Speichern)
+    "latex-workshop.view.pdf.viewer": "tab",        // Standardansicht des kompilierten PDF als Tab
+    "latex-workshop.latex.autoBuild.run": "never",  // Deaktivierung Kompilierung bei Dateispeicherung
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux", "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot", "*.out", "*.toc", "*.acn", "*.acr", "*.alg", "*.glg", "*.glo", "*.gls", "*.fls", "*.log", "*.fdb_latexmk", "*.snm", "*.synctex(busy)", "*.synctex.gz(busy)", "*.nav", "*.ist", "*.run.xml"
+    ],
+    "latex-workshop.latex.recipe.default": "lastUsed" // immer zuletzt gewähltes "Rezept" verwenden
+}

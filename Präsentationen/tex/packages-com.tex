@@ -1,0 +1,70 @@
+\usepackage{babel}                                                  % wird eigentlich durch beamer aufgerufen, fehlt der erneute Aufruf hier jedoch, werden Datumsangaben im Literaturverzeichnis falsch dargestellt
+\usepackage{appendixnumberbeamer}
+\usepackage{siunitx}                                                % SI Einheiten
+\sisetup{
+    locale=DE,                                                      % setzt \cdot statt \times in Exponentialschreibweise und output-decimal-marker = {,}
+    % output-decimal-marker = {,},                                  % überflüssig durch locale=DE
+    group-digits = integer,
+    group-separator = {.},                                          % Punkt als 1000er-Trennzeichen
+    group-minimum-digits = 4,                                       % schon ab 4 Stellen gruppieren
+    per-mode = symbol-or-fraction,                                  % per-mode wird in Abhängigkeit der Umgebung gesetzt, bei Fehlern: [per-mode=fraction] manuell setzen oder bei Drehzahlen: [per-mode=reciprocal]
+    output-complex-root = \mathrm{j},
+    exponent-to-prefix = true,
+    list-final-separator = { und },
+    list-pair-separator = { und },
+    % list-units = single,                                          % Einheit nur beim letzten Listenelement
+    % range-units = single,                                         % Einheit nur bei der größeren Bereichsgrenze
+    range-phrase = { bis }
+}
+\usepackage{listings}                                               % Code-Listings mit automatischem Syntax-Highlighting
+% Bsp. für Einstellungen (https://www.overleaf.com/learn/latex/Code_listing)
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\footnotesize,
+    identifierstyle=\color{blue},
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codepurple},
+    keywordstyle=\color{magenta},
+    backgroundcolor=\color{backcolour},
+    numberstyle=\tiny\color{codegray},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    % numbers=left,
+    numbers=none,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+\lstset{literate=%                                                  % https://tex.stackexchange.com/questions/39640/typesetting-utf8-listings-with-german-umlaute
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {°}{{\si{\degree}}}1
+}
+\lstdefinelanguage{json}{%
+morekeywords={true,false},
+sensitive=false,
+morecomment=[l]{//},
+morestring=[b]",
+}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{csquotes} % 'babel/polyglossia' detected but 'csquotes' missing. Loading 'csquotes' recommended.
+\usepackage[style=authoryear,sorting=none,backend=biber]{biblatex}
+% \DeclareFieldFormat{title}{\textsl{#1}}                             % Titel im Literaturverzeichnis in schräger statt kursiver Schrift
+\DeclareNameAlias{author}{family-given}                             % https://tex.stackexchange.com/questions/290103/get-last-name-first-in-biblatex-using-numeric-style
+\DeclareNameAlias{editor}{family-given}                             % früher: last-first
+\DeclareNameAlias{translator}{family-given}
+\DeclareNameAlias{default}{family-given}

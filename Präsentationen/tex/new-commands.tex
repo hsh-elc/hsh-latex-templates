@@ -1,0 +1,33 @@
+%%% Quellenangabe nach Bildern
+% https://tex.stackexchange.com/questions/206921/how-to-add-source-information-at-bottom-right-corner-of-a-figure-in-beamer
+\newcommand{\Quelle}[2][Quelle]{\par\hfill {\tiny #1:~#2}}%\itshape
+
+%%% neuer Befehl für Fakultätsauswahl
+\def\VarHsHFak{6}
+\newcommand{\HsHFak}[1]{
+    \def\VarHsHFak{#1}
+}
+
+%%% Färbung und Änderung der Aufzählungszeichen als neuer Befehl
+% https://tex.stackexchange.com/questions/14319/beamer-change-individual-bullet-color-in-itemize-list
+\newcommand\ipro{\item[\textcolor{green}{\raisebox{0.2ex}{$\blacktriangle$}}]}
+\newcommand\icon{\item[\textcolor{red}{\raisebox{0.2ex}{$\blacktriangledown$}}]}
+% funktioniert
+\newcommand\itodo{\item[\textcolor{red}{\textbf{!}}]}
+
+%%% kleines hochgestelltes C im Kreis, P im Kreis, R im Kreis, TM
+\newcommand{\supscrC}{\textsuperscript{\tiny\textcopyright}} % kleines hochgestelltes C im Kreis
+\newcommand{\supscrP}{\textsuperscript{\tiny\textcircledP}} % kleines hochgestelltes P im Kreis
+\newcommand{\supscrR}{\textsuperscript{\tiny\textregistered}} % kleines hochgestelltes R im Kreis
+\newcommand{\supscrTM}{\textsuperscript{\tiny\texttrademark}} % kleines hochgestelltes TM
+
+% [alle] Indizes Steil Stellen (von Cube, HsH-Forum)
+% https://betech-hsh.de/viewtopic.php?f=119&t=756
+\def\subinrm#1{\sb{\mathrm{#1}}}
+{\catcode`\_=13 \global\let_=\subinrm}
+\mathcode`_="8000
+% Macros definieren:
+\def\upsubscripts{\catcode`\_=12 }
+\def\normalsubscripts{\catcode`\_=8 }
+% Macro benutzen:
+\upsubscripts %Indizes Steil
